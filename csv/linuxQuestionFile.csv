@@ -1,0 +1,32 @@
+What is the command used to change directories?,1,cd,cp,mkdir,ls-ltr
+What is the command to copying a file?,1,cp,ls,cd,mkdir
+What is the command used to check where you are?,1,pwd,ls,mkdir,cp
+How do you check who you are?,1,whoami,mkdir,WHO-AM-I,cd 
+How do you repeat and execute the last command?,1,!!,ls -ltr,$$,cp
+What is the command to create a directory?,1,mkdir,gedit,rm,sudo chown
+What command can display information on a specified command?,1,man,ls,men,ls -ltr
+How do dispose of the commands on your command line?,1,clear,rm,Killall processname,tail
+How do you list all files in a long list (detailed) format?,1,ls -ltr,ls,list -all,man
+How do you create a file called md.py?,1,gedit md.py,run md.py,python md.py,execute md.py
+What is the main command to unzip a file?,1,gunzip,unzip,remove,open zip
+How do you remove a directory called css?,2,rm -r css,mv -r css,cp css,rm -f css
+The ___ command is useful to view short files in terminal,2,cat,rat,unzip,man
+What kind of permissions do r-w-x stand for?,2,read-write-execute,,write-read-execute,execute-write-read,read-execute-write
+How do you see what the command cd does?,2,man cd,tall cd,head cd,cat cd
+How do you insert comments in python?,2,#,//,<#---->,/**/
+What is the method to see command line history?,2,history,man ,tail,head
+Display the last 2 lines of a file (the default is 10)?,2,tail -2,t -2,h -2,head -2
+How do you download http://domain.com/file,2,wget http://domain.com/file,download http://domain.com/file,tag http://domain.com/file,gedit http://domain.com/file
+What is the command to display free and used space?,2,free -h,fused -s,dis -storage,display -space
+How do you browse through the first 10 lines of script.py?,2,head script.py,tail -10 script.py,python script.py,gedit script.py &
+How do you browse through the last 10 lines of game.html?,3,tail game.html,head -10 game.html,python game.html,gedit game.html &
+How do give permission of rwx rwx r-x to a file named blog.txt?,3,chmod 775 blog.txt,chmod 755 blog.txt,chmod blog.txt,chmod 777 blog.txt
+How do give permission of rw- rw- r-- to a file named kibron.py?,3,chmod 664 kibron.py,chmod 775 kibron.py,chmod 777 kibron.py,chmod 666 kibron.py
+How to kill all processes named processname?,3,killall processname,kill processname,kill -all processname,clear processname
+Display CPU information?,3,cat /proc/cpuinfo,head /proc/cpuinfo,tail /proc/cpuinfo,man /proc/cpuinfo
+Show how long the system has been running?,3,+ load Uptime,Uptime -load,load Uptime,- load Uptime 
+What is the command to delete an account called John?,3 ,userdel John,del John,user -del John,userdelete John
+Display the network address of the host name?,3 ,hostname -i,host -i,host name -i,hostname
+Display all local ip addresses?,3,hostname -l,hostname -m,hostname -d,hostname -ip
+How do you change a user for a file named game.py from root to zulatech5 user?,3,Sudo chown zulatech5:zulatech5 game.py,Sudo chown zulatech5 game.py,chown zulatech5:zulatech5 game.py,Sudo zulatech5:zulatech5 game.py
+How do create tar file named archive.tar that will contain blog.html and gravityGame.html?,3,tar -cvf archive.tar blog.html gravityGame.html,tar archive.tar blog.html and gravityGame.html,tar -xf archive.tar blog.html gravityGame.html,tar cvf archive.tar blog.html gravityGame.html
