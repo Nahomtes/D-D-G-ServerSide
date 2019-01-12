@@ -1,0 +1,368 @@
+nahom@nahom-VirtualBox:/usr/lib/cgi-bin/dropDownGame$ cd
+nahom@nahom-VirtualBox:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 5.7.24-0ubuntu0.16.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| church_DB          |
+| drop_down_game     |
+| mydatabase         |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+8 rows in set (0.52 sec)
+
+mysql> use drop_down_game;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++--------------------------+
+| Tables_in_drop_down_game |
++--------------------------+
+| question_answer          |
+| t_choice                 |
+| t_question               |
+| t_scores                 |
+| t_user                   |
+| user_name                |
++--------------------------+
+6 rows in set (0.00 sec)
+
+mysql> describe question
+question                      question_answer.question_text
+question_answer               question_id                  
+question_answer.answer        question_text                
+question_answer.id           
+mysql> describe question_answer;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| question_text | varchar(250) | YES  |     | NULL    |                |
+| answer        | varchar(250) | YES  |     | NULL    |                |
+| id            | int(11)      | NO   | PRI | NULL    | auto_increment |
++---------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.16 sec)
+
+mysql> describe t_choice;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | int(11)      | NO   | PRI | NULL    | auto_increment |
+| question_id  | int(11)      | NO   |     | NULL    |                |
+| choice_label | varchar(255) | YES  |     | NULL    |                |
+| choice_text  | varchar(255) | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> describe t_question;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| level    | varchar(255) | YES  |     | NULL    |                |
+| question | varchar(255) | YES  |     | NULL    |                |
+| id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| answer   | varchar(1)   | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> describe t_scores;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| user_id   | int(11)     | NO   | MUL | NULL    |                |
+| level     | varchar(25) | YES  |     | NULL    |                |
+| score     | varchar(25) | YES  |     | NULL    |                |
+| create_ts | varchar(25) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> describe t_user;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| user_name | varchar(255) | YES  |     | NULL    |                |
+| password  | varchar(255) | YES  |     | NULL    |                |
+| lname     | varchar(255) | YES  |     | NULL    |                |
+| fname     | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					/*********************************************************/
+
+
+
+nahom@nahom-VirtualBox:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 5.7.24-0ubuntu0.16.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| church_DB          |
+| drop_down_game     |
+| mydatabase         |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use drop_down_game;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++--------------------------+
+| Tables_in_drop_down_game |
++--------------------------+
+| question_answer          |
+| t_choice                 |
+| t_question               |
+| t_scores                 |
+| t_user                   |
+| user_name                |
++--------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from t_choice;
++-----+-------------+--------------+-------------------------------------------------+
+| id  | question_id | choice_label | choice_text                                     |
++-----+-------------+--------------+-------------------------------------------------+
+|   1 |           1 | A            | cp                                              |
+|   2 |           1 | B            | cd                                              |
+|   3 |           1 | C            | mkdir                                           |
+|   4 |           1 | D            | ls-ltr                                          |
+|   5 |           2 | A            | mkdir                                           |
+|   6 |           2 | B            | ls                                              |
+|   7 |           2 | C            | cd                                              |
+|   8 |           2 | D            | cp                                              |
+|   9 |           3 | A            | ls                                              |
+|  10 |           3 | B            | pwd                                             |
+|  11 |           3 | C            | mkdir                                           |
+|  12 |           3 | D            | cp                                              |
+|  13 |           4 | A            | cd                                              |
+|  14 |           4 | B            | mkdir                                           |
+|  15 |           4 | C            | WHO-AM-I                                        |
+|  16 |           4 | D            | whoami                                          |
+|  17 |           5 | A            | !!                                              |
+|  18 |           5 | B            | ls -ltr                                         |
+|  19 |           5 | C            | $$                                              |
+|  20 |           5 | D            | cp                                              |
+|  21 |           6 | A            | sudo chown                                      |
+|  22 |           6 | B            | gedit                                           |
+|  23 |           6 | C            | rm                                              |
+|  24 |           6 | D            | mkdir                                           |
+|  25 |           7 | A            | ls -ltr                                         |
+|  26 |           7 | B            | ls                                              |
+|  27 |           7 | C            | men                                             |
+|  28 |           7 | D            | man                                             |
+|  29 |           8 | A            | clear                                           |
+|  30 |           8 | B            | rm                                              |
+|  31 |           8 | C            | Killall processname                             |
+|  32 |           8 | D            | tail                                            |
+|  33 |           9 | A            | ls -ltr                                         |
+|  34 |           9 | B            | ls                                              |
+|  35 |           9 | C            | list -all                                       |
+|  36 |           9 | D            | man                                             |
+|  37 |          10 | A            | run md.py                                       |
+|  38 |          10 | B            | gedit md.py                                     |
+|  39 |          10 | C            | python md.py                                    |
+|  40 |          10 | D            | execute md.py                                   |
+|  41 |          11 | A            | remove                                          |
+|  42 |          11 | B            | unzip                                           |
+|  43 |          11 | C            | gunzip                                          |
+|  44 |          11 | D            | open zip                                        |
+|  45 |          12 | A            | rm -f css                                       |
+|  46 |          12 | B            | mv -r css                                       |
+|  47 |          12 | C            | cp css                                          |
+|  48 |          12 | D            | rm -r css                                       |
+|  49 |          13 | A            | man                                             |
+|  50 |          13 | B            | rat                                             |
+|  51 |          13 | C            | unzip                                           |
+|  52 |          13 | D            | cat                                             |
+|  53 |          14 | A            | head cd                                         |
+|  54 |          14 | B            | tall cd                                         |
+|  55 |          14 | C            | man cd                                          |
+|  56 |          14 | D            | cat cd                                          |
+|  57 |          15 | A            | <#---->                                         |
+|  58 |          15 | B            | //                                              |
+|  59 |          15 | C            | #                                               |
+|  60 |          15 | D            | /**/                                            |
+|  61 |          16 | A            | history                                         |
+|  62 |          16 | B            | man                                             |
+|  63 |          16 | C            | tail                                            |
+|  64 |          16 | D            | head                                            |
+|  65 |          17 | A            | tail -2                                         |
+|  66 |          17 | B            | t -2                                            |
+|  67 |          17 | C            | h -2                                            |
+|  68 |          17 | D            | head -2                                         |
+|  69 |          18 | A            | download http://domain.com/file                 |
+|  70 |          18 | B            | wget http://domain.com/file                     |
+|  71 |          18 | C            | tag http://domain.com/file                      |
+|  72 |          18 | D            | gedit http://domain.com/file                    |
+|  73 |          19 | A            | fused -s                                        |
+|  74 |          19 | B            | free -h                                         |
+|  75 |          19 | C            | dis -storage                                    |
+|  76 |          19 | D            | display -space                                  |
+|  77 |          20 | A            | tail -10 script.py                              |
+|  78 |          20 | B            | head script.py                                  |
+|  79 |          20 | C            | python script.py                                |
+|  80 |          20 | D            | gedit script.py &                               |
+|  81 |          21 | A            | head -10 game.html                              |
+|  82 |          21 | B            | tail game.html                                  |
+|  83 |          21 | C            | python game.html                                |
+|  84 |          21 | D            | gedit game.html &                               |
+|  85 |          22 | A            | chmod 775 blog.txt                              |
+|  86 |          22 | B            | chmod 755 blog.txt                              |
+|  87 |          22 | C            | chmod blog.txt                                  |
+|  88 |          22 | D            | chmod 777 blog.txt                              |
+|  89 |          23 | A            | chmod 777 kibron.py                             |
+|  90 |          23 | B            | chmod 775 kibron.py                             |
+|  91 |          23 | C            | chmod 664 kibron.py                             |
+|  92 |          23 | D            | chmod 666 kibron.py                             |
+|  93 |          24 | A            | clear processname                               |
+|  94 |          24 | B            | kill processname                                |
+|  95 |          24 | C            | kill -all processname                           |
+|  96 |          24 | D            | killall processname                             |
+|  97 |          25 | A            | head /proc/cpuinfo                              |
+|  98 |          25 | B            | cat /proc/cpuinfo                               |
+|  99 |          25 | C            | tail /proc/cpuinfo                              |
+| 100 |          25 | D            | man /proc/cpuinfo                               |
+| 101 |          26 | A            | Uptime -load                                    |
+| 102 |          26 | B            | + load Uptime                                   |
+| 103 |          26 | C            | load Uptime                                     |
+| 104 |          26 | D            | - load Uptime                                   |
+| 105 |          27 | A            | userdel John                                    |
+| 106 |          27 | B            | del John                                        |
+| 107 |          27 | C            | user -del John                                  |
+| 108 |          27 | D            | userdelete John                                 |
+| 109 |          28 | A            | hostname -i                                     |
+| 110 |          28 | B            | host -i                                         |
+| 111 |          28 | C            | host name -i                                    |
+| 112 |          28 | D            | hostname                                        |
+| 113 |          29 | A            | hostname -ip                                    |
+| 114 |          29 | B            | hostname -m                                     |
+| 115 |          29 | C            | hostname -d                                     |
+| 116 |          29 | D            | hostname -l                                     |
+| 117 |          30 | A            | Sudo chown zulatech5:zulatech5 game.py          |
+| 118 |          30 | B            | Sudo chown zulatech5 game.py                    |
+| 119 |          30 | C            | chown zulatech5:zulatech5 game.py               |
+| 120 |          30 | D            | Sudo zulatech5:zulatech5 game.py                |
+| 121 |          31 | A            | tar cvf archive.tar blog.html gravityGame.html  |
+| 122 |          31 | B            | tar archive.tar blog.html and gravityGame.html  |
+| 123 |          31 | C            | tar -xf archive.tar blog.html gravityGame.html  |
+| 124 |          31 | D            | tar -cvf archive.tar blog.html gravityGame.html |
++-----+-------------+--------------+-------------------------------------------------+
+124 rows in set (0.00 sec)
+
+mysql> show tables;
++--------------------------+
+| Tables_in_drop_down_game |
++--------------------------+
+| question_answer          |
+| t_choice                 |
+| t_question               |
+| t_scores                 |
+| t_user                   |
+| user_name                |
++--------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from t_question;
++-------+--------------------------------------------------------------------------------------------+----+--------+
+| level | question                                                                                   | id | answer |
++-------+--------------------------------------------------------------------------------------------+----+--------+
+| 1     | What is the command used to change directories?                                            |  1 | B      |
+| 1     | What is the command to copying a file?                                                     |  2 | D      |
+| 1     | What is the command used to check where you are?                                           |  3 | B      |
+| 1     | How do you check who you are?                                                              |  4 | D      |
+| 1     | How do you repeat and execute the last command?                                            |  5 | A      |
+| 1     | What is the command to create a directory?                                                 |  6 | D      |
+| 1     | What command can display information on a specified command?                               |  7 | D      |
+| 1     | How do dispose of the commands on your command line?                                       |  8 | A      |
+| 1     | How do you list all files in a long list (detailed) format?                                |  9 | A      |
+| 1     | How do you create a file called md.py?                                                     | 10 | B      |
+| 1     | What is the main command to unzip a file?                                                  | 11 | C      |
+| 2     | How do you remove a directory called css?                                                  | 12 | D      |
+| 2     | The ___ command is useful to view short files in terminal                                  | 13 | D      |
+| 2     | How do you see what the command cd does?                                                   | 14 | C      |
+| 2     | How do you insert comments in python?                                                      | 15 | C      |
+| 2     | What is the method to see command line history?                                            | 16 | A      |
+| 2     | Display the last 2 lines of a file (the default is 10)?                                    | 17 | A      |
+| 2     | How do you download http://domain.com/file                                                 | 18 | B      |
+| 2     | What is the command to display free and used space?                                        | 19 | B      |
+| 2     | How do you browse through the first 10 lines of script.py?                                 | 20 | B      |
+| 3     | How do you browse through the last 10 lines of game.html?                                  | 21 | B      |
+| 3     | How do give permission of rwx rwx r-x to a file named blog.txt?                            | 22 | A      |
+| 3     | How do give permission of rw- rw- r-- to a file named kibron.py?                           | 23 | C      |
+| 3     | How to kill all processes named processname?                                               | 24 | D      |
+| 3     | Display CPU information?                                                                   | 25 | B      |
+| 3     | Show how long the system has been running?                                                 | 26 | B      |
+| 3     | What is the command to delete an account called John?                                      | 27 | A      |
+| 3     | Display the network address of the host name?                                              | 28 | A      |
+| 3     | Display all local ip addresses?                                                            | 29 | D      |
+| 3     | How do you change a user for a file named game.py from root to zulatech5 user?             | 30 | A      |
+| 3     | How do create tar file named archive.tar that will contain blog.html and gravityGame.html? | 31 | D      |
++-------+--------------------------------------------------------------------------------------------+----+--------+
+31 rows in set (0.00 sec)
+
+mysql> select * from t_scores;
+Empty set (0.00 sec)
+
+mysql> select * from t_user;
+Empty set (0.00 sec)
+
+mysql> 
+
+
